@@ -1,13 +1,69 @@
 package dao;
 
-import mode.UserLogin;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+
+
+import mode.User;
+
 
 public class UserData {
-	public boolean userLogin(UserLogin user){
+	public boolean userLogin(User user){
+		
+		
+		try {
+			
+			DBConn con=new DBConn();
+			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs =statement.executeQuery("select from tv_userLogin where userName='"+user.getUserName()+"'");
+	
+			
+			
+			if(rs.next()){
+				String userPass =rs.getString("passWord");
+				userPass =userPass.trim();
+				System.out.println("userPas:"+userPass);
+				System.out.println("pass:"+user.getPassWord());
+				if(user.getPassWord().equals(userPass)){ return true;}
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return  false;
+		}
 		return false;
 	}
-	public boolean UserRegister(UserLogin user){
-		return false;
+	public boolean UserRegister(User user,String repeatPass){
+		
+try {
+			
+			DBConn con=new DBConn();
+			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs =statement.executeQuery("select from tv_userLogin where userName='"+user.getUserName()+"'");
+			
+			
+			if(!rs.next()){
+				
+	            int i = statement.executeUpdate("insert into tv_userLogin (userName,passWord) values('"+user.getUserName()
+	        	+"','"+user.getPassWord()+"')");
+				
+				System.out.println(i);
+				if(i==1){ return true;}
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return  false;
+		}	
+             return  false;
 	}
 
 }

@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mode.AdminLogin;
+import mode.User;
+import dao.*;
+
 public class AdminLoginServlet extends HttpServlet {
 
 	/**
@@ -37,21 +41,22 @@ public class AdminLoginServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
+		System.out.println("Ω¯»ÎAdminLogin");
 		PrintWriter out = response.getWriter();
-		out
-				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		String adminName =request.getParameter("adminName");
+		String adminPass =request.getParameter("adminPass");
+		if(adminName!=null&&adminPass!=null){
+			adminName =new StrConvert().chStr(adminName);
+			AdminLogin admin =new AdminLogin();
+			admin.setAdminName(adminName);
+			admin.setAdminPass(adminPass);
+			boolean  flag =new AdminData().AdminLogin(admin);
+			if(flag){
+				out.write("success");
+			}else{
+				out.write("failed");
+			}
+		}
 	}
 
 	/**
@@ -66,21 +71,8 @@ public class AdminLoginServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out
-				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		doGet(request, response);
+		
 	}
 
 	/**

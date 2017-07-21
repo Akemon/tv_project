@@ -1,6 +1,6 @@
 package mode;
 
-public class UserLogin {
+public class User {
 	private int userID;
 	private String userName;
 	private String passWord;
