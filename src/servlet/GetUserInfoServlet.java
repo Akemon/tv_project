@@ -53,7 +53,6 @@ public class GetUserInfoServlet extends HttpServlet {
 		JSONObject jsonObject =new JSONObject();
 		jsonObject.put("listInformation", jsonArray);
 		out.write(jsonObject.toString());
-		
 	}
 
 	/**

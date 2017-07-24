@@ -48,12 +48,10 @@ try {
 	public boolean modifyUserInfo(UserInfo user){
 		return false;
 	}
-	public boolean deleteUserInfo(UserInfo user){
+	public boolean deleteUserInfo(String userName){
 		return false;
 	}
-	public boolean insertUserInfo(UserInfo user){
-		return false;
-	}
+
 	
 	public List<UserInfo> getOneUserInfo(String userName){
 		return null;

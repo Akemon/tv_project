@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mode.UserLR;
+import dao.StrConvert;
+import dao.UserInfoData;
+import dao.UserLRData;
+
 public class DeleteUserInfoServlet extends HttpServlet {
 
 	/**
@@ -38,20 +43,21 @@ public class DeleteUserInfoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
+	
 		PrintWriter out = response.getWriter();
-		out
-				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		response.setHeader("Content-Type", "text/html;charset=UTF-8");
+		String userName =request.getParameter("userName");
+		System.out.println("Ω¯»ÎDeleteUserInfo...");
+		if(userName!=null){
+			userName =new StrConvert().chStr(userName);
+			boolean  flag =new UserInfoData().deleteUserInfo(userName);
+			if(flag){
+				out.write("success");
+			}else{
+				out.write("failed");
+			}
+		}
+	
 	}
 
 	/**
@@ -66,21 +72,7 @@ public class DeleteUserInfoServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out
-				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		doGet(request, response);
 	}
 
 	/**
