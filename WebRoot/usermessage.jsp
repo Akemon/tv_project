@@ -6,12 +6,16 @@
 <title>欣创</title>
 <link href="css/bootstrap-responsive.css" rel="stylesheet" />
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
-<link href="css/myStyle.css" rel="stylesheet" type="text/css"/>
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/tv-style.css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="js/myjs.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/require.js"></script>
+<script type="text/javascript"> 
+window.onload=function(){
+	display();
+} 
+</script> 
 </head>
   
 <body>
@@ -47,6 +51,7 @@
 			</ul>
 		</div>
 	</div>
+	<div class="fixcon"></div>
 	<div class="main">
 		<div class="container-main">
 			<p class="usertitle">用户信息</p>
@@ -102,7 +107,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">用户信息修改</h4>
 				</div>
-				<div class="modal-body">、
+				<div class="modal-body">
 					<div class="form-group">
 					<label for="name">名称</label>
     				<input type="text" class="form-control" id="name" placeholder="请输入名称">

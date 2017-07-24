@@ -1,11 +1,11 @@
-/*拓展样式属于自己添加样式，少量使用bootstrap框架进行辅助设计*/
+/*鎷撳睍鏍峰紡灞炰簬鑷繁娣诲姞鏍峰紡锛屽皯閲忎娇鐢╞ootstrap妗嗘灦杩涜杈呭姪璁捐*/
 
-/*表格超链接*/
+/*琛ㄦ牸瓒呴摼鎺�*/
 .table-a tr th a{
 	text-decoration: none;
 }
 
-/*左侧菜单栏设计*/
+/*宸︿晶鑿滃崟鏍忚璁�*/
 .menu,
 .menu ul,
 .menu li,
@@ -16,11 +16,17 @@
 	outline: none;
 }
 
+.fixcon{
+	width: 15%;
+	height: 100px;
+	float: left;
+}
+
 .menu{
-	height: 721px;
+	height: 100%;
+	position:absolute;
 	width: 15%;
 	background: #564F76;
-	float: left;
 }
 .menu ul li{
 	position: relative;
@@ -48,14 +54,14 @@
 	background-color:#474162;
 }
 
-/*右侧浮动显示*/
+/*鍙充晶娴姩鏄剧ず*/
 .rightFloat{
 	float: right;
 	padding: 2px 0;
 	padding-right: 0px;
 }
 
-/*顶部文字设计*/
+/*椤堕儴鏂囧瓧璁捐*/
 .topwords{
 	font-size: 25px;
 	color: aliceblue;
@@ -70,12 +76,12 @@
 	padding-top: 7px;
 }
 
-/*右侧浮动拓展设计*/
+/*鍙充晶娴姩鎷撳睍璁捐*/
 .nav-extend{
 	margin-right: 95px;
 }
 
-/*用户信息主体样式*/
+/*鐢ㄦ埛淇℃伅涓讳綋鏍峰紡*/
 .main{
 	width: 85%;
 	float: left;
