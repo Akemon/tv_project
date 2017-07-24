@@ -1,0 +1,92 @@
+/*拓展样式属于自己添加样式，少量使用bootstrap框架进行辅助设计*/
+
+/*表格超链接*/
+.table-a tr th a{
+	text-decoration: none;
+}
+
+/*左侧菜单栏设计*/
+.menu,
+.menu ul,
+.menu li,
+.menu a{
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+
+.menu{
+	height: 721px;
+	width: 15%;
+	background: #564F76;
+	float: left;
+}
+.menu ul li{
+	position: relative;
+	list-style: none;
+	display: block;
+	height: 50px;
+	font-size: 15px;
+	
+}
+.menu ul li a{
+	display: block;
+	padding: 14px;
+	padding-left: 10px;
+	text-decoration: none;
+	color: aliceblue;
+	width: 95%;
+	transition:width 0.5s;
+}
+.menu ul li a:hover{
+	width: 100%;
+	background-color:#4D476A;
+}
+
+.actives{
+	background-color:#474162;
+}
+
+/*右侧浮动显示*/
+.rightFloat{
+	float: right;
+	padding: 2px 0;
+	padding-right: 0px;
+}
+
+/*顶部文字设计*/
+.topwords{
+	font-size: 25px;
+	color: aliceblue;
+}
+.topwords:hover,
+.topwords:visited,
+.topwords:link{
+	color: aliceblue;
+	text-decoration: none;
+}
+.toplist{
+	padding-top: 7px;
+}
+
+/*右侧浮动拓展设计*/
+.nav-extend{
+	margin-right: 95px;
+}
+
+/*用户信息主体样式*/
+.main{
+	width: 85%;
+	float: left;
+}
+.container-main{
+	width: 95%;
+	margin: 2% auto;
+	
+}
+.usertitle{
+	font-size: 32px;
+	font-weight: bold;
+	margin: 0 0 25px 40%;
+}
