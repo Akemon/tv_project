@@ -13,8 +13,7 @@ public class AdminData {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select from tv_adminLogin where adminName='"+admin.getAdminName()+"'");
-	
+			ResultSet rs =statement.executeQuery("select * from tv_adminLogin where adminName='"+admin.getAdminName()+"'");
 			
 			
 			if(rs.next()){
@@ -31,6 +30,15 @@ public class AdminData {
 			return  false;
 		}
 		return false;
+	}
+	
+	public static void main(String argss[]){
+		AdminLogin a=new AdminLogin();
+		a.setAdminID(1);
+		a.setAdminName("hk");
+		a.setAdminPass("123");
+		AdminData  aa=new AdminData();
+		System.out.println(aa.AdminLogin(a));
 	}
 
 }

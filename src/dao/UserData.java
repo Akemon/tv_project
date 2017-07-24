@@ -4,9 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-
-
+import mode.AdminLogin;
 import mode.User;
 
 
@@ -18,8 +16,7 @@ public class UserData {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select from tv_userLogin where userName='"+user.getUserName()+"'");
-	
+			ResultSet rs =statement.executeQuery("select * from tv_user where userName='"+user.getUserName()+"'");
 			
 			
 			if(rs.next()){
@@ -43,7 +40,7 @@ try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select from tv_userLogin where userName='"+user.getUserName()+"'");
+			ResultSet rs =statement.executeQuery("select * from tv_user where userName='"+user.getUserName()+"'");
 			
 			System.out.println(rs.next());
 			if(!rs.next()){
@@ -64,6 +61,16 @@ try {
 			return  false;
 		}	
              return  false;
+	}
+	
+	public static void main(String argss[]){
+		User a=new User();
+		a.setUserID(1);
+		a.setUserName("°²Í¯");
+		a.setPassWord("123");
+		UserData  aa=new UserData();
+		System.out.println(aa.userLogin(a));
+		
 	}
 
 }
