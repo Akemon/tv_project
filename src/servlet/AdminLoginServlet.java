@@ -56,7 +56,11 @@ public class AdminLoginServlet extends HttpServlet {
 			}else{
 				out.write("failed");
 			}
+			
+			
+			out.println("≤‚ ‘");
 		}
+		
 	}
 
 	/**
@@ -72,6 +76,9 @@ public class AdminLoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
+		
+		
+		
 		
 	}
 

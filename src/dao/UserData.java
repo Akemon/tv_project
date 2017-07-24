@@ -45,7 +45,7 @@ try {
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs =statement.executeQuery("select from tv_userLogin where userName='"+user.getUserName()+"'");
 			
-			
+			System.out.println(rs.next());
 			if(!rs.next()){
 				
 	            int i = statement.executeUpdate("insert into tv_userLogin (userName,passWord) values('"+user.getUserName()
