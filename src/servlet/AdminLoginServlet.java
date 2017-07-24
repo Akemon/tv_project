@@ -60,6 +60,7 @@ public class AdminLoginServlet extends HttpServlet {
 			
 			out.println("²âÊÔ");
 			out.println("asdasd");
+			out.println("ºÎ¿µ");
 			
 		}
 		
