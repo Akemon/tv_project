@@ -2,15 +2,21 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import mode.UserInfo;
 import mode.UserLR;
 
 import dao.StrConvert;
+import dao.UserInfoData;
 import dao.UserLRData;
 
 public class UserLoginServlet extends HttpServlet {
@@ -54,7 +60,11 @@ public class UserLoginServlet extends HttpServlet {
 			user.setPassWord(userPass);
 			boolean  flag =new UserLRData().userLogin(user);
 			if(flag){
-				out.write("success");
+				List<UserInfo> userInfoList = new UserInfoData().getOneUserInfo(userName);
+				JSONArray jsonArray =JSONArray.fromObject(userInfoList);
+				JSONObject jsonObject =new JSONObject();
+				jsonObject.put("UserInfo", jsonArray);
+				out.write(jsonObject.toString());
 			}else{
 				out.write("failed");
 			}
