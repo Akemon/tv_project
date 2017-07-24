@@ -8,17 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mode.UserLR;
-
-import dao.StrConvert;
-import dao.UserLRData;
-
-public class UserLoginServlet extends HttpServlet {
+public class UserInfoServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public UserLoginServlet() {
+	public UserInfoServlet() {
 		super();
 	}
 
@@ -44,21 +39,19 @@ public class UserLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		response.setHeader("Content-Type", "text/html;charset=UTF-8");
-		System.out.println("Ω¯»ÎUserLogin");
-		String userName =request.getParameter("userName");
-		String userPass =request.getParameter("userPass");
-		if(userName!=null&&userPass!=null){
-			userName =new StrConvert().chStr(userName);
-			UserLR user =new UserLR();
-			user.setUserName(userName);
-			user.setPassWord(userPass);
-			boolean  flag =new UserLRData().userLogin(user);
-			if(flag){
-				out.write("success");
-			}else{
-				out.write("failed");
-			}
-		}
+		response.setCharacterEncoding("UTF-8");
+		String pageNumber =request.getParameter("pageNumber");
+		String pageSize =request.getParameter("pageSize");
+		String searchString =request.getParameter("searchString");
+		PrintWriter pw =response.getWriter();
+		List<Student> studentList = new StudentData().queryStudentInformation(pageNumber, pageSize,searchString);
+		JSONArray jsonArray =JSONArray.fromObject(studentList);
+		JSONObject jsonObject =new JSONObject();
+		int allDataNumber =new StudentData().getTotalDataNumber();
+		jsonObject.put("listInformation", jsonArray);
+		jsonObject.put("allDataNumber", allDataNumber);
+		pw.write(jsonObject.toString());
+		
 	}
 
 	/**

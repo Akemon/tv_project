@@ -4,19 +4,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import mode.AdminLogin;
-import mode.User;
 
 
-public class UserData {
-	public boolean userLogin(User user){
+
+import mode.UserLR;
+
+
+public class UserLRData {
+	public boolean userLogin(UserLR user){
 		
 		
 		try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select * from tv_user where userName='"+user.getUserName()+"'");
+			ResultSet rs =statement.executeQuery("select from tv_userLR where userName='"+user.getUserName()+"'");
+	
 			
 			
 			if(rs.next()){
@@ -34,18 +37,18 @@ public class UserData {
 		}
 		return false;
 	}
-	public boolean UserRegister(User user,String repeatPass){
+	public boolean UserRegister(UserLR user,String repeatPass){
 		
 try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select * from tv_user where userName='"+user.getUserName()+"'");
+			ResultSet rs =statement.executeQuery("select from tv_userLR where userName='"+user.getUserName()+"'");
 			
 			System.out.println(rs.next());
 			if(!rs.next()){
 				
-	            int i = statement.executeUpdate("insert into tv_userLogin (userName,passWord) values('"+user.getUserName()
+	            int i = statement.executeUpdate("insert into tv_userLR (userName,passWord) values('"+user.getUserName()
 	        	+"','"+user.getPassWord()+"')");
 				
 				System.out.println(i);
@@ -62,15 +65,13 @@ try {
 		}	
              return  false;
 	}
-	
 	public static void main(String argss[]){
-		User a=new User();
+		UserLR a=new UserLR();
 		a.setUserID(1);
 		a.setUserName("°²Í¯");
 		a.setPassWord("123");
-		UserData  aa=new UserData();
+		UserLRData  aa=new UserLRData();
 		System.out.println(aa.userLogin(a));
 		
 	}
-
 }
