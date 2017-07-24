@@ -7,7 +7,7 @@ function display(){
 
 		type: "GET",
 
-		url:"/tv_Project/servlet/UserInfoServlet", 
+		url:"/tv_Project/servlet/GetUserInfoServlet", 
 
 		data:null, 
 		
@@ -16,16 +16,11 @@ function display(){
 		error: function(request) {
 
 			alert(request.val);
-			alert('haha');
 		},
 		
 		success: function(data) {
-			//alert('ss');
 			alert(data);
-			
-			
 			//$value=data.split("\n");
-
 			//$("#ajP").html(data); //将返回的结果显示到ajaxDiv中
 			//alert($value[3]);
 			//$("#newsPublic").html($value[0]);

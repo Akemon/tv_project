@@ -51,6 +51,7 @@ window.onload=function(){
 			</ul>
 		</div>
 	</div>
+	<div class="fixcon"></div>
 	<div class="main">
 		<div class="container-main">
 			<p class="usertitle">用户信息</p>
