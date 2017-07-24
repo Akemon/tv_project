@@ -37,8 +37,8 @@ public class ModifyUserInfoServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		
+		PrintWriter out = response.getWriter();
+		response.setHeader("Content-Type", "text/html;charset=UTF-8");
 	}
 
 	/**
