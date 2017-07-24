@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +15,12 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import java.util.*;
 
-public class UserInfoServlet extends HttpServlet {
+public class GetUserInfoServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public UserInfoServlet() {
+	public GetUserInfoServlet() {
 		super();
 	}
 
@@ -48,6 +47,7 @@ public class UserInfoServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setHeader("Content-Type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");	
+		System.out.println("½øÈëgetUserInfo....");
 		List<UserInfo> userInfoList = new UserInfoData().getUserInfoList();
 		JSONArray jsonArray =JSONArray.fromObject(userInfoList);
 		JSONObject jsonObject =new JSONObject();

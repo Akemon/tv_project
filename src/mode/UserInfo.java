@@ -9,6 +9,19 @@ public class UserInfo {
 	private String mail;
 	private String address;
 	private int userID;
+	
+	public UserInfo(int id, String nickName, String sex, String age, String phone, String mail, String address,
+			int userID) {
+	
+		this.id = id;
+		this.nickName = nickName;
+		this.sex = sex;
+		this.age = age;
+		this.phone = phone;
+		this.mail = mail;
+		this.address = address;
+		this.userID = userID;
+	}
 	public int getId() {
 		return id;
 	}
@@ -57,5 +70,6 @@ public class UserInfo {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
+
 	
 }

@@ -18,7 +18,7 @@ public class UserLRData {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select from tv_userLogin where userName='"+user.getUserName()+"'");
+			ResultSet rs =statement.executeQuery("select from tv_userLR where userName='"+user.getUserName()+"'");
 	
 			if(rs.next()){
 				String userPass =rs.getString("passWord");
@@ -41,12 +41,12 @@ try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select from tv_userLogin where userName='"+user.getUserName()+"'");
+			ResultSet rs =statement.executeQuery("select from tv_userLR where userName='"+user.getUserName()+"'");
 			
 			System.out.println(rs.next());
 			if(!rs.next()){
 				
-	            int i = statement.executeUpdate("insert into tv_userLogin (userName,passWord) values('"+user.getUserName()
+	            int i = statement.executeUpdate("insert into tv_userLR (userName,passWord) values('"+user.getUserName()
 	        	+"','"+user.getPassWord()+"')");
 				
 				System.out.println(i);
@@ -61,5 +61,13 @@ try {
 		}	
              return  false;
 	}
-
+	public static void main(String argss[]){
+		UserLR a=new UserLR();
+		a.setUserID(1);
+		a.setUserName("°²Í¯");
+		a.setPassWord("123");
+		UserLRData  aa=new UserLRData();
+		System.out.println(aa.userLogin(a));
+		
+	}
 }
