@@ -59,6 +59,8 @@ public class AdminLoginServlet extends HttpServlet {
 			
 			
 			out.println("≤‚ ‘");
+			out.println("asdasd");
+			
 		}
 		
 	}
