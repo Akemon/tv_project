@@ -7,11 +7,11 @@ import java.sql.Statement;
 
 
 
-import mode.User;
+import mode.UserLR;
 
 
-public class UserData {
-	public boolean userLogin(User user){
+public class UserLRData {
+	public boolean userLogin(UserLR user){
 		
 		
 		try {
@@ -37,7 +37,7 @@ public class UserData {
 		}
 		return false;
 	}
-	public boolean UserRegister(User user,String repeatPass){
+	public boolean UserRegister(UserLR user,String repeatPass){
 		
 try {
 			

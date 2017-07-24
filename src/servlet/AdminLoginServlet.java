@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mode.AdminLogin;
-import mode.User;
+import mode.UserLR;
 import dao.*;
 
 public class AdminLoginServlet extends HttpServlet {
@@ -58,9 +58,7 @@ public class AdminLoginServlet extends HttpServlet {
 			}
 			
 			
-			out.println("≤‚ ‘");
-			out.println("asdasd");
-			out.println("∫Œøµ");
+			
 			
 		}
 		

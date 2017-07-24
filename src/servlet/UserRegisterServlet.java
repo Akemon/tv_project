@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mode.User;
+import mode.UserLR;
 import dao.StrConvert;
-import dao.UserData;
+import dao.UserLRData;
 
 public class UserRegisterServlet extends HttpServlet {
 
@@ -48,10 +48,10 @@ public class UserRegisterServlet extends HttpServlet {
 		String repeatPass =request.getParameter("repeatPass");
 		if(userName!=null&&userPass!=null&&repeatPass!=null){
 			userName =new StrConvert().chStr(userName);
-			User user =new User();
+			UserLR user =new UserLR();
 			user.setUserName(userName);
 			user.setPassWord(userPass);
-			boolean  flag =new UserData().UserRegister(user,repeatPass);
+			boolean  flag =new UserLRData().UserRegister(user,repeatPass);
 			if(flag){
 				out.write("success");
 			}else{
