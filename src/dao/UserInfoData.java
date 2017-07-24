@@ -13,7 +13,7 @@ try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select from tv_userInfo");
+			ResultSet rs =statement.executeQuery("select * from tv_userInfo");
 			List<UserInfo> userInfos=new ArrayList<UserInfo>();
 			 
 			

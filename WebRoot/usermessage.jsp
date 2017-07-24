@@ -68,9 +68,9 @@ window.onload=function(){
 					<th>²Ù×÷</th>
 				</tr>
 			</thead>
-			<tbody class="table-a">
+			<tbody class="table-a" id="tableT">
 			<tr>
-				<th>1</th>
+				<th>1<input type="hidden" value="1"></th>
 				<th>ss</th>
 				<th>ss</th>
 				<th>ss</th>

@@ -1,6 +1,9 @@
 // JavaScript Document
 function display(){
 	//alert('ss');
+	var tb=document.getElementById("tableT");
+	tb.innerHTML=tb.innerHTML+"<tr><th>1<input type=\"hidden\" value=\"1\"></th><th>haha</th><th>ss</th><th>ss</th><th>ss</th><th>ss</th><th>ss</th><th><a href=\"#\" class=\"glyphicon glyphicon-cog\" data-toggle=\"modal\" data-target=\"#myModal\" title=\"信息修改\"></a>&nbsp;<a href=\"#\" class=\"glyphicon glyphicon-trash\" title=\"信息删除\"></a></th></tr>";
+	//tb.innerHTML=tb.innerHTML+"<tr><th>1<input type=\"hidden\" value=\"1\"></th><th>haha</th><th>ss</th><th>ss</th><th>ss</th><th>ss</th><th>ss</th><th><a href=\"#\" class=\"glyphicon glyphicon-cog\" data-toggle=\"modal\" data-target=\"#myModal\" title=\"信息修改\"></a>&nbsp;<a href=\"#\" class=\"glyphicon glyphicon-trash\" title=\"信息删除\"></a></th></tr>";
 	$.ajax({
 
 		cache: false,
@@ -20,12 +23,10 @@ function display(){
 		
 		success: function(data) {
 			alert(data);
-			//$value=data.split("\n");
-			//$("#ajP").html(data); //将返回的结果显示到ajaxDiv中
-			//alert($value[3]);
-			//$("#newsPublic").html($value[0]);
-			//$("#enterprise").html($value[1]);
-
+			//var t=eval(data);
+			//alert(t.data[0].id);
+			var myobj = eval('(' + data + ')'); 
+			alert(myobj.listInformation[0].id);
 		}
  
 	});
