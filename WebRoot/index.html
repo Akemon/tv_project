@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			html,body{
+				font-family: "微软雅黑";
+				width: 100%;
+            	height: 100%;
+            	margin: auto; 
+            	padding: 0;
+            	display: flex;
+    			justify-content:center;
+    			align-items:Center;
+			}
+			div#container_login{
+				margin:0 auto;
+				height: 500px;
+				width: 400px;
+				border: 1px solid gainsboro;
+				box-shadow:  0 -1px 3px gainsboro;
+			}
+			div#container_login h2{
+				padding-left: 20px;
+			}
+			#ul{
+				height: 350px;
+				width: 100%;
+				display: flex;
+    			justify-content:center;
+    			align-items:Center;
+			}
+			ul{
+				padding: 0;
+			}
+			li{
+				list-style-type: none;
+				text-align: center;
+			}
+			.li_border{
+				margin-top: 10px;
+				padding-left: 8px;
+				border: 1px solid gainsboro;
+			}
+			.li_border:hover{
+				border: 1px solid #cc0000;
+			}
+			img.logo{
+				height: 20px;
+				vertical-align: text-bottom;
+			}
+			input{
+				width: 300px;
+				color: grey;
+				border: 0px;
+				padding-left: 5px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			input:focus{
+				outline: none;
+				color: black;
+			}
+			input#btn_login{
+				height: 30px;
+				width: 100%;
+				margin-top: 8px;
+				text-align: center;
+				background-color: #cc0000;
+				border-radius:8px;
+				padding: 0;
+				color: white;
+			}
+		</style>
+		<script>
+			function test(){
+
+//				alert("hello");
+				x=document.getElementsByClassName("li_border");
+				x.style.borderColor="#cc0000";
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="container_login">
+			<h2>账号登录</h2>
+			<div id="ul">
+			<ul>
+				<li class="li_border">
+					<img class="logo" src="img/username.png" />
+					<input type="text" name="username" id="username" value="" placeholder="请输入用户名" />
+				</li>
+				<li class="li_border">
+					<img class="logo" src="img/password.png" />
+					<input type="password" name="password" id="password" value="" placeholder="请输入密码" />
+				</li>
+				<li>
+					<input type="button" id="btn_login" value="登录" />
+				</li>
+			</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -20,8 +20,6 @@ public class UserLRData {
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs =statement.executeQuery("select from tv_userLR where userName='"+user.getUserName()+"'");
 	
-			
-			
 			if(rs.next()){
 				String userPass =rs.getString("passWord");
 				userPass =userPass.trim();
@@ -55,8 +53,6 @@ try {
 				if(i==1){ return true;}
 				
 			}
-			
-			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
