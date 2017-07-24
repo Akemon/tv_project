@@ -43,6 +43,19 @@ try {
 			
 		}
             return null;
-	}   
-
+	} 
+	
+	public boolean modifyUserInfo(UserInfo user){
+		return false;
+	}
+	public boolean deleteUserInfo(UserInfo user){
+		return false;
+	}
+	public boolean insertUserInfo(UserInfo user){
+		return false;
+	}
+	
+	public List<UserInfo> getOneUserInfo(String userName){
+		return null;
+	}
 }
