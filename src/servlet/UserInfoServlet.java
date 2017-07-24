@@ -8,6 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserInfoData;
+
+import mode.UserInfo;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import java.util.*;
+
 public class UserInfoServlet extends HttpServlet {
 
 	/**
@@ -39,18 +46,12 @@ public class UserInfoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		response.setHeader("Content-Type", "text/html;charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		String pageNumber =request.getParameter("pageNumber");
-		String pageSize =request.getParameter("pageSize");
-		String searchString =request.getParameter("searchString");
-		PrintWriter pw =response.getWriter();
-		List<Student> studentList = new StudentData().queryStudentInformation(pageNumber, pageSize,searchString);
-		JSONArray jsonArray =JSONArray.fromObject(studentList);
+		response.setCharacterEncoding("UTF-8");	
+		List<UserInfo> userInfoList = new UserInfoData().getUserInfoList();
+		JSONArray jsonArray =JSONArray.fromObject(userInfoList);
 		JSONObject jsonObject =new JSONObject();
-		int allDataNumber =new StudentData().getTotalDataNumber();
 		jsonObject.put("listInformation", jsonArray);
-		jsonObject.put("allDataNumber", allDataNumber);
-		pw.write(jsonObject.toString());
+		out.write(jsonObject.toString());
 		
 	}
 
