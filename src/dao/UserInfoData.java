@@ -69,7 +69,8 @@ try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			int i =statement.executeUpdate("delete from tv_userInfo where userID="+userID);			
+			int i =statement.executeUpdate("DELETE tv_userLR,tv_userInfo FROM  tv_userLR LEFT JOIN tv_userInfo ON tv_userLR.userID=tv_userInfo.userID WHERE userID= "+userID);	
+			
 			if(i==1){ return true;}		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
