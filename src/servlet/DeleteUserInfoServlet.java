@@ -46,18 +46,18 @@ public class DeleteUserInfoServlet extends HttpServlet {
 	
 		PrintWriter out = response.getWriter();
 		response.setHeader("Content-Type", "text/html;charset=UTF-8");
-		String userName =request.getParameter("userName");
+		String userIDString =request.getParameter("userID");
+		int userID =0;
+		if(userIDString!=null){
+			userID =Integer.parseInt(userIDString);
+		}
 		System.out.println("Ω¯»ÎDeleteUserInfo...");
-		if(userName!=null){
-			userName =new StrConvert().chStr(userName);
-			boolean  flag =new UserInfoData().deleteUserInfo(userName);
+			boolean  flag =new UserInfoData().deleteUserInfo(userID);
 			if(flag){
 				out.write("success");
 			}else{
 				out.write("failed");
 			}
-		}
-	
 	}
 
 	/**

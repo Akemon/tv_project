@@ -2,7 +2,7 @@ package dao;
 import java.sql.*;
 
 public class DBConn {
-	private String url="jdbc:mysql://172.20.128.155:3306/tv_data";
+	private String url="jdbc:mysql://172.20.128.155:3306/tv_data?characterEncoding=UTF-8";
 	private String driver ="com.mysql.jdbc.Driver";
 	private String user ="root";
 	private String pass ="123";

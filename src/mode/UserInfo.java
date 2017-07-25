@@ -22,6 +22,9 @@ public class UserInfo {
 		this.address = address;
 		this.userID = userID;
 	}
+	public UserInfo(){
+		
+	}
 	public int getId() {
 		return id;
 	}
