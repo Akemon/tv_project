@@ -41,16 +41,26 @@ try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			Statement statement2 =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs =statement.executeQuery("select * from tv_userLR where userName='"+user.getUserName()+"'");
+			
 			
 			System.out.println(rs.next());
 			if(!rs.next()){
-				
-	            int i = statement.executeUpdate("insert into tv_userLR (userName,passWord,phoneStatus,tvStatus) values('"+user.getUserName()
+			
+	           statement.executeUpdate("insert into tv_userLR (userName,passWord,phoneStatus,tvStatus) values('"+user.getUserName()
 	        	+"','"+user.getPassWord()+"','"+user.getPhoneStatus()+"','"+user.getTvStatus()+"')");
 				
+				String temp=null;
+				ResultSet rs2=statement2.executeQuery("select * from tv_userLR where userName='"+user.getUserName()+"'");
+				if(rs2.next()){
+				 temp=rs2.getString("userID");}
 				
-				if(i==1){ return true;}
+				int j=statement.executeUpdate("insert into tv_userInfo (nickName,sex,age,phone,mail,address,userID) values(null,null,null,null,null,null,"+temp+")");
+				
+	            if(j==1){ 
+	            	
+	            	return true;}
 				
 			}
 			
@@ -59,11 +69,12 @@ try {
 			e.printStackTrace();
 			return  false;
 		}	
-             return  false;
+     return false;
 	}
+	
 	public static void main(String argss[]){
 		UserLR a=new UserLR();
-		a.setUserID(1);
+		//a.setUserID(1);
 		a.setUserName("abc");
 		
 		UserLRData  aa=new UserLRData();

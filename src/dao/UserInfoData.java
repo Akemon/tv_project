@@ -69,9 +69,10 @@ try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			int i =statement.executeUpdate("DELETE tv_userLR,tv_userInfo FROM  tv_userLR LEFT JOIN tv_userInfo ON tv_userLR.userID=tv_userInfo.userID WHERE userID= "+userID);	
+			int i =statement.executeUpdate("DELETE  FROM  tv_userInfo  WHERE userID= "+userID);	
+			int j =statement.executeUpdate("DELETE  FROM  tv_userLR  WHERE userID= "+userID);	
 			
-			if(i==1){ return true;}		
+			if(i==j){ return true;}		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,10 +91,10 @@ try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select * from tv_userInfo RIGHT JOIN tv_userLR on tv_userInfo.userID=tv_userLR.userID where userName="+userName);
+			ResultSet rs =statement.executeQuery("select * from tv_userInfo RIGHT  JOIN tv_userLR on tv_userInfo.userID=tv_userLR.userID where userName='"+userName+"'");
 			List<UserInfo> userInfos=new ArrayList<UserInfo>();
 			 
-			
+			while(rs.next()){
 
 				 int id=rs.getInt("id");
 				 String nickName=rs.getString("nickName");
@@ -106,11 +107,12 @@ try {
 
 				
 				
-				System.out.println("userPas:"+nickName);
+				System.out.println("userID:"+userID);
 				System.out.println("name:"+userName);
 				UserInfo userInfo=new UserInfo(id, nickName, sex, age, phone, mail, address, userID);
  			   
 				userInfos.add(userInfo);
+			}
 				return userInfos;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -120,5 +122,9 @@ try {
 		}
           
 		
+	}
+	public  static void  main(String args[]){
+		UserInfoData a=new UserInfoData();
+		System.out.println(a.deleteUserInfo(17));
 	}
 }
