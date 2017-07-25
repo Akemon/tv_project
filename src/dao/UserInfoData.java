@@ -34,15 +34,16 @@ try {
 				UserInfo userInfo=new UserInfo(id, nickName, sex, age, phone, mail, address, userID);
  			   
 				userInfos.add(userInfo);
-				return userInfos;
+				
 			}
+			return userInfos;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 			
 		}
-            return null;
+           
 	} 
 	
 	public boolean modifyUserInfo(UserInfo user){
