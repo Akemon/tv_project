@@ -83,13 +83,13 @@ try {
 	
 
 	
-	public List<UserInfo> getOneUserInfo(int userID){
+	public List<UserInfo> getOneUserInfo(String userName){
 		
 try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select * from tv_userInfo where userID="+userID);
+			ResultSet rs =statement.executeQuery("select * from tv_userInfo RIGHT JOIN tv_userLR on tv_userInfo.userID=tv_userLR.userID where userName="+userName);
 			List<UserInfo> userInfos=new ArrayList<UserInfo>();
 			 
 			
@@ -101,12 +101,12 @@ try {
 				 String phone=rs.getString("phone");
 				 String mail=rs.getString("mail");
 				 String address=rs.getString("address");
-				 
+				 int  userID=rs.getInt("userID");
 
 				
 				
 				System.out.println("userPas:"+nickName);
-				System.out.println("id:"+userID);
+				System.out.println("name:"+userName);
 				UserInfo userInfo=new UserInfo(id, nickName, sex, age, phone, mail, address, userID);
  			   
 				userInfos.add(userInfo);

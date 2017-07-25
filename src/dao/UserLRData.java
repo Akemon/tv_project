@@ -41,15 +41,15 @@ try {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select from tv_userLR where userName='"+user.getUserName()+"'");
+			ResultSet rs =statement.executeQuery("select * from tv_userLR where userName='"+user.getUserName()+"'");
 			
 			System.out.println(rs.next());
 			if(!rs.next()){
 				
-	            int i = statement.executeUpdate("insert into tv_userLR (userName,passWord) values('"+user.getUserName()
-	        	+"','"+user.getPassWord()+"')");
+	            int i = statement.executeUpdate("insert into tv_userLR (userName,passWord,phoneStatus,tvStatus) values('"+user.getUserName()
+	        	+"','"+user.getPassWord()+"','"+user.getPhoneStatus()+"','"+user.getTvStatus()+"')");
 				
-				System.out.println(i);
+				
 				if(i==1){ return true;}
 				
 			}
@@ -64,10 +64,10 @@ try {
 	public static void main(String argss[]){
 		UserLR a=new UserLR();
 		a.setUserID(1);
-		a.setUserName("°²Í¯");
-		a.setPassWord("123");
+		a.setUserName("abc");
+		
 		UserLRData  aa=new UserLRData();
-		System.out.println(aa.userLogin(a));
+		System.out.println(aa.UserRegister(a, "123456"));
 		
 	}
 }
