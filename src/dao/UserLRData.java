@@ -56,7 +56,7 @@ try {
 				if(rs2.next()){
 				 temp=rs2.getString("userID");}
 				
-				int j=statement.executeUpdate("insert into tv_userInfo (nickName,sex,age,phone,mail,address,userID) values(null,null,null,null,null,null,"+temp+")");
+				int j=statement.executeUpdate("insert into tv_userInfo (nickName,sex,age,phone,mail,address,userID) values('"+user.getUserName()+"',null,null,null,null,null,"+temp+")");
 				
 	            if(j==1){ 
 	            	
