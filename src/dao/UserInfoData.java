@@ -17,7 +17,7 @@ try {
 			List<UserInfo> userInfos=new ArrayList<UserInfo>();
 			 
 			
-			if(rs.next()){
+			while(rs.next()){
 				 int id=rs.getInt("id");
 				 String nickName=rs.getString("nickName");
 				 String sex=rs.getString("sex");
@@ -46,14 +46,77 @@ try {
 	} 
 	
 	public boolean modifyUserInfo(UserInfo user){
+try {
+			
+			DBConn con=new DBConn();
+			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			int i =statement.executeUpdate("update  tv_userInfo set nickName='"+user.getNickName()+"',sex='"+user.getSex()+"',age='"+user.getAge()+"',phone='"
+			+user.getPhone()+"',mail='"+user.getMail()+"',address='"+user.getAddress()+"' where userID="+user.getUserID());			
+			if(i==1){ return true;}		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return  false;
+		}
 		return false;
+		
 	}
-	public boolean deleteUserInfo(String userName){
+	
+	
+	public boolean deleteUserInfo(int userID){
+try {
+			
+			DBConn con=new DBConn();
+			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			int i =statement.executeUpdate("delete from tv_userInfo where userID="+userID);			
+			if(i==1){ return true;}		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return  false;
+		}
 		return false;
 	}
 
 	
-	public List<UserInfo> getOneUserInfo(String userName){
-		return null;
+	
+
+	
+	public List<UserInfo> getOneUserInfo(int userID){
+		
+try {
+			
+			DBConn con=new DBConn();
+			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs =statement.executeQuery("select * from tv_userInfo where userID="+userID);
+			List<UserInfo> userInfos=new ArrayList<UserInfo>();
+			 
+			
+
+				 int id=rs.getInt("id");
+				 String nickName=rs.getString("nickName");
+				 String sex=rs.getString("sex");
+				 String age=rs.getString("age");
+				 String phone=rs.getString("phone");
+				 String mail=rs.getString("mail");
+				 String address=rs.getString("address");
+				 
+
+				
+				
+				System.out.println("userPas:"+nickName);
+				System.out.println("id:"+userID);
+				UserInfo userInfo=new UserInfo(id, nickName, sex, age, phone, mail, address, userID);
+ 			   
+				userInfos.add(userInfo);
+				return userInfos;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+			
+		}
+          
+		
 	}
 }

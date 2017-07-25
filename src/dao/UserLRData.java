@@ -18,7 +18,7 @@ public class UserLRData {
 			
 			DBConn con=new DBConn();
 			Statement statement =con.getConnect().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs =statement.executeQuery("select from tv_userLR where userName='"+user.getUserName()+"'");
+			ResultSet rs =statement.executeQuery("select * from tv_userLR where userName='"+user.getUserName()+"'");
 	
 			if(rs.next()){
 				String userPass =rs.getString("passWord");
