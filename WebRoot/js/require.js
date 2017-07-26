@@ -4,19 +4,21 @@ function display(){
 	$.ajax({
 		cache: false,
 		type: "POST",
-		url:"/tv_Project/servlet/GetUserInfoServlet", 
+		url:"/tv_Project/servlet/GetUserInfoServlet",
+		dataType:"json",
+		contentType:"application/x-www-form-urlencoded;charset=utf-8",
 		data:null, 
 		error: function(request) {
 			alert(request.val);
 		},
 		success: function(data) {
 			//alert(data);
-			var myobj = eval('(' + data + ')'); 
+			var myobj = eval(data); 
 			var size=0;
 			for (key in myobj.listInformation) {
 				//if (obj.hasOwnProperty(key))
 				var number=size+1;
-				//  alert(myobj.listInformation[size].nickName);
+				alert(myobj.listInformation[size].nickName);
 				tb.innerHTML=tb.innerHTML+"<tr><th>"+number+"<input name=\"userID\" id=\"userID\" type=\"hidden\" value=\""+myobj.listInformation[size].userID+"\"></th>" +
 				"<th>"+myobj.listInformation[size].nickName+"</th>" +
 				"<th>"+myobj.listInformation[size].sex+"</th>" +
@@ -72,9 +74,10 @@ function change(){
 	var phone=document.getElementById("phone").value;
 	$.ajax({
 		cache: false,
-		type: "GET",
+		type: "POST",
 		url:"/tv_Project/servlet/ModifyUserInfoServlet", 
-		data:"userID="+userID+"&nickName="+nickName+"&sex="+sex+"&age="+age+"&mail="+mail+"&phone="+phone+"&address="+address, 
+		data:"userID="+userID+"&nickName="+nickName+"&sex="+sex+"&age="+age+"&mail="+mail+"&phone="+phone+"&address="+address,
+		//contentType:"application/x-www-form-urlencoded;charset=utf-8",
 		error: function(request) {
 			alert(request.val);
 		},
