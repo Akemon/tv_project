@@ -29,7 +29,7 @@ function display(){
 				myobj.listInformation[size].sex+"','"+myobj.listInformation[size].age+"','"+
 				myobj.listInformation[size].mail+"','"+myobj.listInformation[size].address+"','"+
 				myobj.listInformation[size].phone+"');\" data-toggle=\"modal\" data-target=\"#myModal\" title=\"信息修改\"></a>&nbsp;&nbsp;" +
-				"<a href=\"#\" class=\"glyphicon glyphicon-trash\" title=\"信息删除\"></a></th></tr>";
+				"<a href=\"#\" class=\"glyphicon glyphicon-trash\" onclick=\"isdelete("+myobj.listInformation[size].userID+");\" title=\"信息删除\"></a></th></tr>";
 				
 				size++;
 			}
@@ -100,4 +100,30 @@ function getVal(userID,nickName,sex,age,mail,address,phone){
 	document.getElementById("mail").value=mail;
 	document.getElementById("address").value=address;
 	document.getElementById("phone").value=phone;
+}
+
+function isdelete(userID){
+	//alert('ss');
+	var isdelete=confirm("确认删除该用户？")
+	if(isdelete==true){
+		$.ajax({
+			cache: false,
+			type: "GET",
+			url:"/tv_Project/servlet/DeleteUserInfoServlet", 
+			data:"userID="+userID, 
+			error: function(request) {
+				alert(request.val);
+			},
+			success: function(data) {
+				//alert(data);
+				if(data=="success"){
+					alert('删除成功！');
+					top.location="usermessage.jsp";
+				}
+				else{
+					alert('删除失败！');
+				}
+			}
+		});
+	}
 }
