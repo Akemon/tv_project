@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>欣创</title>
+<title>coocaa</title>
 <link href="css/bootstrap-responsive.css" rel="stylesheet" />
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
 <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -70,17 +70,17 @@ window.onload=function(){
 			</thead>
 			<tbody class="table-a" id="tableT">
 			<tr>
-				<th>1<input type="hidden" value="1"></th>
-				<th>ss</th>
-				<th>ss</th>
-				<th>ss</th>
-				<th>ss</th>
-				<th>ss</th>
-				<th>ss</th>
+				<!-- <th>1<input type="hidden" value="1"></th>
+				<th>huyujian</th>
+				<th>男</th>
+				<th>18</th>
+				<th>225@qq.com</th>
+				<th>szpt</th>
+				<th>12345678978</th>
 				<th>
 					<a href="#" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal" title="信息修改"></a>&nbsp;
 					<a href="#" class="glyphicon glyphicon-trash" title="信息删除"></a>
-				</th>
+				</th> -->
 			</tr>
 			
 			<!--极限显示12条记录-->
@@ -109,33 +109,34 @@ window.onload=function(){
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-					<label for="name">名称</label>
-    				<input type="text" class="form-control" id="name" placeholder="请输入名称">
+						<label for="nickName">名称</label>
+	    				<input type="text" class="form-control" id="nickName" name="nickName" placeholder="请输入名称">
 					</div>
    					<div class="form-group">
-    				<label for="name">性别</label>
-    				<input type="text" class="form-control" id="name" placeholder="请输入性别">
+	    				<label for="sex">性别</label>
+	    				<input type="text" class="form-control" id="sex" name="sex" placeholder="请输入性别">
 					</div>
    					<div class="form-group">
-    				<label for="name">年龄</label>
-    				<input type="text" class="form-control" id="name" placeholder="请输入年龄">
+	    				<label for="age">年龄</label>
+	    				<input type="text" class="form-control" id="age" name="age" placeholder="请输入年龄">
 					</div>
    					<div class="form-group">
-    				<label for="mail">邮箱</label>
-    				<input type="text" class="form-control" id="mail" placeholder="请输入邮箱">
+	    				<label for="mail">邮箱</label>
+	    				<input type="text" class="form-control" id="mail" name="mail" placeholder="请输入邮箱">
     				</div>
     				<div class="form-group">
-    				<label for="city">地址</label>
-    				<input type="text" class="form-control" id="city" placeholder="请输入城市">
+	    				<label for="address">地址</label>
+	    				<input type="text" class="form-control" id="address" name="address" placeholder="请输入城市">
     				</div>
     				<div class="form-group">
-    				<label for="phone">电话</label>
-    				<input type="text" class="form-control" id="phone" placeholder="请输入电话">
+	    				<label for="phone">电话</label>
+	    				<input type="text" class="form-control" id="phone" name="phone" placeholder="请输入电话">
+	    				<input type="hidden" name="hiddenID" id="hiddenID">
     				</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary">提交更改</button>
+					<a type="button" class="btn btn-primary" onclick="change();">提交更改</a>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal -->
